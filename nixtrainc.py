@@ -10,7 +10,10 @@ def get_question():
     question = request.POST.get('question')
     return question
 
-
+def client_status():
+    """ Here will will return status to server """
+    pass
+    
 def process_command(command):
     ret = subprocess.check_call(command, shell=True)
     if ret:
@@ -22,6 +25,7 @@ def send_question():
         Send a new question
     """
     pass
+
 
 def process_question():
     out = json.loads(get_question())
