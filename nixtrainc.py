@@ -2,7 +2,7 @@ from __future__ import print_function
 import json
 import subprocess
 import blessings
-from bottle import route, run, debug, request, post
+from bottle import route, run, debug, request, post, get
 
 
 @post('nixtrain/questions')
@@ -10,10 +10,13 @@ def get_question():
     question = request.POST.get('question')
     return question
 
+
+@get('nixtrain/status')
 def client_status():
     """ Here will will return status to server """
     pass
-    
+ 
+
 def process_command(command):
     ret = subprocess.check_call(command, shell=True)
     if ret:
