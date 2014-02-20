@@ -32,13 +32,21 @@ def send_question():
 
 def process_question():
     out = json.loads(get_question())
-    questions = out.keys()
+    questions = out.iterkeys()
     if 'command' in questions:
             if not process_command(out['command']):
                 send_question()
 
     if 'question' in questions:
             terminal_output(out['question'])
+
+def get_action():
+    action = request.POST.get('action')
+    return action
+
+def process_action():
+    command = get_command_from_db(get_action()) 
+    process_command(command)
 
 
 def terminal_output(question):
